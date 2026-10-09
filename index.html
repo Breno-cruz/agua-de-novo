@@ -35,30 +35,14 @@
     </script>
     <style>
         /* Custom scrollbar styling */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
+        ::-webkit-scrollbar { width: 6px; height: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f5f9; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
 
         /* Pin Pulsing and Hover Animations */
-        .pin-marker {
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-        }
-        .pin-marker:hover {
-            transform: translate(-50%, -50%) scale(1.3) !important;
-            z-index: 40 !important;
-        }
+        .pin-marker { transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); }
+        .pin-marker:hover { transform: translate(-50%, -50%) scale(1.3) !important; z-index: 40 !important; }
         .pin-marker.active-pin {
             transform: translate(-50%, -50%) scale(1.35) !important;
             z-index: 50 !important;
@@ -80,14 +64,9 @@
             100% { transform: scale(0.95); opacity: 0; }
         }
         .pulse-urgent::before {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background-color: rgba(239, 68, 68, 0.6);
-            animation: pulse-ring 2s infinite ease-in-out;
-            z-index: -1;
+            content: ''; position: absolute; width: 100%; height: 100%;
+            border-radius: 50%; background-color: rgba(239, 68, 68, 0.6);
+            animation: pulse-ring 2s infinite ease-in-out; z-index: -1;
         }
 
         .card-active {
@@ -103,13 +82,9 @@
     <header class="bg-gradient-to-r from-sky-700 via-brand-600 to-cyan-600 text-white shadow-lg sticky top-0 z-30">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
             <div class="flex items-center space-x-3 text-center sm:text-left">
-                <div class="p-2.5 bg-white/10 backdrop-blur-md rounded-2xl ring-1 ring-white/20 shadow-inner">
-                    <i class="fa-solid font-bold fa-droplet text-3xl text-cyan-200"></i>
-                </div>
                 <div>
                     <h1 class="text-2xl font-bold tracking-tight leading-none flex items-center gap-2 justify-center sm:justify-start">
                         Água de Novo
-                        <span class="text-xs px-2 py-0.5 rounded-full bg-cyan-400/20 text-cyan-100 border border-cyan-300/30 font-medium">v2.5</span>
                     </h1>
                     <p class="text-xs text-sky-100 mt-1 font-light">Sistema de Mapeamento e Monitoramento Hídrico Escolar</p>
                 </div>
@@ -129,7 +104,6 @@
 
         <!-- Dashboard Metrics -->
         <section aria-label="Resumo dos Indicadores Hídricos" class="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <!-- Intervenção / Urgente -->
             <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 border-t-4 border-t-red-500 flex flex-col justify-between hover:shadow-md transition-shadow">
                 <div class="flex justify-between items-start">
                     <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Intervenção</span>
@@ -141,7 +115,6 @@
                 </div>
             </div>
 
-            <!-- Em Avaliação -->
             <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 border-t-4 border-t-amber-500 flex flex-col justify-between hover:shadow-md transition-shadow">
                 <div class="flex justify-between items-start">
                     <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Em Avaliação</span>
@@ -153,7 +126,6 @@
                 </div>
             </div>
 
-            <!-- Fontes de Reúso -->
             <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 border-t-4 border-t-sky-500 flex flex-col justify-between hover:shadow-md transition-shadow">
                 <div class="flex justify-between items-start">
                     <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Fontes Reúso</span>
@@ -165,7 +137,6 @@
                 </div>
             </div>
 
-            <!-- Perda Estimada Total -->
             <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 border-t-4 border-t-rose-600 flex flex-col justify-between hover:shadow-md transition-shadow">
                 <div class="flex justify-between items-start">
                     <span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Perda Estimada</span>
@@ -181,116 +152,77 @@
             </div>
         </section>
 
-        <!-- Main Content Area: Blueprint + Information Panel -->
+        <!-- Main Content Area -->
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
 
-            <!-- Interactive Blueprint Section (7 Cols on Large Screens) -->
+            <!-- Interactive Blueprint Section -->
             <section class="lg:col-span-7 bg-white p-5 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-4">
                 <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
                     <div>
                         <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2">
-                            <i class="fa-solid fa-map-location-dot text-brand-600"></i>
-                            Planta Baixa Interativa
+                            <i class="fa-solid fa-map-location-dot text-brand-600"></i> Planta Baixa Interativa
                         </h2>
-                        <p class="text-xs text-slate-500">Clique sobre qualquer marcador para examinar o ponto hídrico</p>
+                        <p class="text-xs text-slate-500">Clique sobre qualquer marcador para examinar o ponto</p>
                     </div>
-                    <div class="text-xs text-slate-400 italic">
-                        Setor Escolar Principal
-                    </div>
+                    <div class="text-xs text-slate-400 italic">Setor Escolar Principal</div>
                 </div>
 
-                <!-- Interactive Map Blueprint Viewport -->
                 <div id="blueprint-canvas" class="relative bg-slate-100 rounded-xl border-2 border-slate-300 blueprint-grid min-h-[380px] sm:min-h-[440px] overflow-hidden select-none">
-                    
-                    <!-- Rooms Architecture Overlay -->
                     <div class="absolute inset-0 p-3 grid grid-cols-12 grid-rows-6 gap-2 opacity-90 pointer-events-none">
                         <!-- Sala 01 -->
                         <div class="col-span-7 row-span-3 bg-amber-50/70 border-2 border-dashed border-amber-300/80 rounded-lg p-2.5 flex flex-col justify-between">
-                            <span class="text-xs font-bold text-amber-800 uppercase tracking-wide flex items-center gap-1.5">
-                                <i class="fa-solid fa-chalkboard-user text-amber-600"></i> Sala 01 (Ar-Cond.)
-                            </span>
+                            <span class="text-xs font-bold text-amber-800 uppercase tracking-wide flex items-center gap-1.5"><i class="fa-solid fa-chalkboard-user text-amber-600"></i> Sala 01 (Ar-Cond.)</span>
                             <span class="text-[10px] text-amber-600 font-medium">Bloco Didático</span>
                         </div>
-
-                        <!-- Banheiro Masculino/Feminino -->
+                        <!-- Banheiro -->
                         <div class="col-span-5 row-span-6 bg-cyan-50/70 border-2 border-dashed border-cyan-300/80 rounded-lg p-2.5 flex flex-col justify-between">
-                            <span class="text-xs font-bold text-cyan-800 uppercase tracking-wide flex items-center gap-1.5">
-                                <i class="fa-solid fa-restroom text-cyan-600"></i> Banheiros
-                            </span>
+                            <span class="text-xs font-bold text-cyan-800 uppercase tracking-wide flex items-center gap-1.5"><i class="fa-solid fa-restroom text-cyan-600"></i> Banheiros</span>
                             <div class="space-y-1 text-right">
                                 <span class="block text-[10px] text-cyan-700 bg-white/60 px-1.5 py-0.5 rounded border border-cyan-200">Torneiras & Descargas</span>
                                 <span class="block text-[10px] text-cyan-700 font-medium">Área Hidráulica Intensa</span>
                             </div>
                         </div>
-
                         <!-- Sala 02 -->
                         <div class="col-span-7 row-span-3 bg-amber-50/70 border-2 border-dashed border-amber-300/80 rounded-lg p-2.5 flex flex-col justify-between">
-                            <span class="text-xs font-bold text-amber-800 uppercase tracking-wide flex items-center gap-1.5">
-                                <i class="fa-solid fa-graduation-cap text-amber-600"></i> Sala 02 (Informática)
-                            </span>
+                            <span class="text-xs font-bold text-amber-800 uppercase tracking-wide flex items-center gap-1.5"><i class="fa-solid fa-graduation-cap text-amber-600"></i> Sala 02 (Informática)</span>
                             <span class="text-[10px] text-amber-600 font-medium">Bloco Didático</span>
                         </div>
                     </div>
-
-                    <!-- Dynamic Map Pins Layer (Populated via JS) -->
-                    <div id="pins-container" class="absolute inset-0 z-10">
-                        <!-- Pins rendered here -->
-                    </div>
+                    <div id="pins-container" class="absolute inset-0 z-10"></div>
                 </div>
 
-                <!-- Map Footer Legend -->
                 <div class="flex flex-wrap items-center justify-between gap-3 pt-2 text-xs text-slate-600 bg-slate-50 p-3 rounded-xl border border-slate-100">
-                    <span class="font-semibold text-slate-700">Legenda de Cores:</span>
+                    <span class="font-semibold text-slate-700">Legenda:</span>
                     <div class="flex items-center gap-4 flex-wrap">
-                        <span class="inline-flex items-center gap-1.5">
-                            <span class="w-3 h-3 rounded-full bg-red-500 inline-block shadow-sm"></span> Reparar Urgente
-                        </span>
-                        <span class="inline-flex items-center gap-1.5">
-                            <span class="w-3 h-3 rounded-full bg-amber-500 inline-block shadow-sm"></span> Em Avaliação
-                        </span>
-                        <span class="inline-flex items-center gap-1.5">
-                            <span class="w-3 h-3 rounded-full bg-sky-500 inline-block shadow-sm"></span> Fonte de Reúso
-                        </span>
+                        <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-red-500 inline-block shadow-sm"></span> Reparar Urgente</span>
+                        <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-amber-500 inline-block shadow-sm"></span> Em Avaliação</span>
+                        <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-sky-500 inline-block shadow-sm"></span> Fonte de Reúso</span>
                     </div>
                 </div>
             </section>
 
-            <!-- Information Panel & Point Cards (5 Cols on Large Screens) -->
+            <!-- Information Panel & Filters -->
             <section class="lg:col-span-5 flex flex-col gap-4">
-                
-                <!-- Filters Bar -->
                 <div class="bg-white p-4 rounded-2xl shadow-sm border border-slate-200 flex flex-col gap-3">
                     <div class="flex items-center justify-between">
-                        <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2">
-                            <i class="fa-solid fa-filter text-brand-600"></i>
-                            Filtrar Registros
-                        </h3>
-                        <span id="filtered-count-badge" class="text-xs bg-slate-100 text-slate-600 font-semibold px-2.5 py-0.5 rounded-full border border-slate-200">
-                            Mostrando 0
-                        </span>
+                        <h3 class="text-sm font-bold text-slate-800 flex items-center gap-2"><i class="fa-solid fa-filter text-brand-600"></i> Filtrar Registros</h3>
+                        <span id="filtered-count-badge" class="text-xs bg-slate-100 text-slate-600 font-semibold px-2.5 py-0.5 rounded-full border border-slate-200">Mostrando 0</span>
                     </div>
-
-                    <!-- Category Filter Buttons -->
-                    <div class="grid grid-cols-4 gap-1.5 p-1 bg-slate-100 rounded-xl text-xs font-medium" role="tablist" aria-label="Filtro de pontos hídricos">
-                        <button onclick="setFilter('todos')" id="filter-todos" class="filter-btn active py-2 px-1 rounded-lg text-center transition-all bg-white text-brand-700 shadow-sm font-semibold" role="tab" aria-selected="true">
-                            Todos
-                        </button>
-                        <button onclick="setFilter('reparar')" id="filter-reparar" class="filter-btn py-2 px-1 rounded-lg text-center transition-all text-slate-600 hover:text-slate-900" role="tab" aria-selected="false">
-                            Reparar
-                        </button>
-                        <button onclick="setFilter('avaliar')" id="filter-avaliar" class="filter-btn py-2 px-1 rounded-lg text-center transition-all text-slate-600 hover:text-slate-900" role="tab" aria-selected="false">
-                            Avaliar
-                        </button>
-                        <button onclick="setFilter('reuso')" id="filter-reuso" class="filter-btn py-2 px-1 rounded-lg text-center transition-all text-slate-600 hover:text-slate-900" role="tab" aria-selected="false">
-                            Reúso
-                        </button>
+                    <div class="grid grid-cols-4 gap-1.5 p-1 bg-slate-100 rounded-xl text-xs font-medium" role="tablist">
+                        <button onclick="setFilter('todos')" id="filter-todos" class="filter-btn active py-2 px-1 rounded-lg text-center transition-all bg-white text-brand-700 shadow-sm font-semibold">Todos</button>
+                        <button onclick="setFilter('reparar')" id="filter-reparar" class="filter-btn py-2 px-1 rounded-lg text-center transition-all text-slate-600 hover:text-slate-900">Reparar</button>
+                        <button onclick="setFilter('avaliar')" id="filter-avaliar" class="filter-btn py-2 px-1 rounded-lg text-center transition-all text-slate-600 hover:text-slate-900">Avaliar</button>
+                        <button onclick="setFilter('reuso')" id="filter-reuso" class="filter-btn py-2 px-1 rounded-lg text-center transition-all text-slate-600 hover:text-slate-900">Reúso</button>
                     </div>
                 </div>
 
-                <!-- Scrollable Cards List -->
-                <div id="cards-container" class="space-y-3 max-h-[520px] overflow-y-auto pr-1">
-                    <!-- Cards populated dynamically -->
+                <!-- Loading Indicator for Data -->
+                <div id="loading-state" class="hidden text-center py-8">
+                    <i class="fa-solid fa-circle-notch fa-spin text-brand-500 text-2xl"></i>
+                    <p class="text-sm text-slate-500 mt-2">Sincronizando com a base de dados...</p>
                 </div>
+
+                <div id="cards-container" class="space-y-3 max-h-[520px] overflow-y-auto pr-1"></div>
             </section>
         </div>
     </main>
@@ -300,452 +232,240 @@
         <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-3">
             <div class="flex items-center gap-2">
                 <i class="fa-solid fa-graduation-cap text-brand-600 text-base"></i>
-                <p>Desenvolvido pela turma de Desenvolvimento de Sistemas — <strong>Projeto Pioneiros 2026</strong></p>
+                <p><strong>Projeto Pioneiros 2026</strong></p>
             </div>
             <p class="text-slate-400">Escola Sustentável &bull; Monitoramento de Recursos Hídricos</p>
         </div>
     </footer>
 
-    <!-- Modal: Adicionar Novo Ponto Hídrico -->
-    <div id="add-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden transition-opacity duration-300" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+    <!-- Modal Form -->
+    <div id="add-modal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden transition-opacity duration-300">
         <div class="bg-white rounded-3xl shadow-2xl border border-slate-100 max-w-lg w-full overflow-hidden transform transition-all scale-95 opacity-0 modal-box">
-            
-            <!-- Modal Header -->
             <div class="bg-slate-900 text-white px-6 py-4 flex items-center justify-between">
                 <div class="flex items-center gap-2.5">
-                    <div class="p-2 bg-brand-500/20 text-brand-400 rounded-xl">
-                        <i class="fa-solid fa-location-dot"></i>
-                    </div>
+                    <div class="p-2 bg-brand-500/20 text-brand-400 rounded-xl"><i class="fa-solid fa-location-dot"></i></div>
                     <div>
-                        <h3 id="modal-title" class="font-bold text-base">Mapear Novo Ponto Hídrico</h3>
-                        <p class="text-xs text-slate-400">Insira os detalhes do ponto observado no ambiente escolar</p>
+                        <h3 class="font-bold text-base">Mapear Novo Ponto</h3>
+                        <p class="text-xs text-slate-400">Insira os detalhes do ponto observado</p>
                     </div>
                 </div>
-                <button onclick="closeModal()" class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition-colors focus:outline-none" aria-label="Fechar Modal">
-                    <i class="fa-solid fa-xmark text-lg"></i>
-                </button>
+                <button onclick="closeModal()" class="text-slate-400 hover:text-white p-1.5 rounded-lg hover:bg-slate-800 transition-colors"><i class="fa-solid fa-xmark text-lg"></i></button>
             </div>
 
-            <!-- Modal Form -->
             <form id="point-form" onsubmit="handleFormSubmit(event)" class="p-6 space-y-4">
-                
-                <!-- Título do Ponto -->
                 <div>
-                    <label for="form-title" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Título do Ponto *</label>
-                    <input type="text" id="form-title" required placeholder="Ex: Torneira Bebedouro Central" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all">
+                    <label for="form-title" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Título *</label>
+                    <input type="text" id="form-title" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500">
                 </div>
-
-                <!-- Local / Sala & Status Categoria -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label for="form-location" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Ambiente / Sala *</label>
-                        <select id="form-location" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all">
+                        <label for="form-location" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Ambiente *</label>
+                        <select id="form-location" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
                             <option value="Banheiro">Banheiros</option>
-                            <option value="Sala 01">Sala 01 (Didática)</option>
-                            <option value="Sala 02">Sala 02 (Informática)</option>
+                            <option value="Sala 01">Sala 01</option>
+                            <option value="Sala 02">Sala 02</option>
                             <option value="Pátio Central">Pátio / Corredor</option>
                         </select>
                     </div>
-
                     <div>
                         <label for="form-type" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Classificação *</label>
-                        <select id="form-type" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all">
+                        <select id="form-type" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
                             <option value="reparar">🔴 Reparar Urgente</option>
                             <option value="avaliar">🟠 Em Avaliação</option>
                             <option value="reuso">🔵 Fonte de Reúso</option>
                         </select>
                     </div>
                 </div>
-
-                <!-- Perda ou Produção L/h & Posição XY -->
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label for="form-flow" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Vazão (Liters/hora)</label>
-                        <input type="number" id="form-flow" min="0" step="0.5" value="1.5" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all">
+                        <label for="form-flow" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Vazão (L/h)</label>
+                        <input type="number" id="form-flow" min="0" step="0.5" value="1.5" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
                     </div>
-
                     <div>
-                        <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Posição na Planta (% X / Y)</label>
+                        <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Posição (% X/Y)</label>
                         <div class="grid grid-cols-2 gap-2">
-                            <input type="number" id="form-x" min="5" max="95" value="50" required placeholder="X %" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs text-center focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500">
-                            <input type="number" id="form-y" min="5" max="95" value="50" required placeholder="Y %" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs text-center focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500">
+                            <input type="number" id="form-x" min="5" max="95" value="50" required placeholder="X" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs text-center focus:outline-none focus:ring-2 focus:ring-brand-500">
+                            <input type="number" id="form-y" min="5" max="95" value="50" required placeholder="Y" class="w-full px-3 py-2 bg-slate-50 border border-slate-300 rounded-xl text-xs text-center focus:outline-none focus:ring-2 focus:ring-brand-500">
                         </div>
                     </div>
                 </div>
-
-                <!-- Ação Recomendada -->
                 <div>
                     <label for="form-action" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Ação Recomendada *</label>
-                    <input type="text" id="form-action" required placeholder="Ex: Substituir reparo da torneira" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all">
+                    <input type="text" id="form-action" required class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
                 </div>
-
-                <!-- Observações detalhadas -->
                 <div>
-                    <label for="form-notes" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Observações / Detalhes</label>
-                    <textarea id="form-notes" rows="2" placeholder="Informações adicionais sobre o vazamento ou reaproveitamento..." class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:bg-white focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500 transition-all"></textarea>
+                    <label for="form-notes" class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1">Observações</label>
+                    <textarea id="form-notes" rows="2" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-300 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-brand-500"></textarea>
                 </div>
-
-                <!-- Form Actions -->
                 <div class="pt-3 border-t border-slate-100 flex items-center justify-end gap-3">
-                    <button type="button" onclick="closeModal()" class="px-4 py-2.5 text-sm font-semibold text-slate-600 hover:text-slate-800 hover:bg-slate-100 rounded-xl transition-colors">
-                        Cancelar
-                    </button>
-                    <button type="submit" class="px-5 py-2.5 text-sm font-semibold text-white bg-brand-600 hover:bg-brand-700 rounded-xl shadow-md hover:shadow-lg transition-all focus:ring-2 focus:ring-brand-500">
-                        Salvar Ponto
-                    </button>
+                    <button type="button" onclick="closeModal()" class="px-4 py-2.5 text-sm font-semibold text-slate-600 hover:text-slate-800 hover:bg-slate-100 rounded-xl transition-colors">Cancelar</button>
+                    <button type="submit" id="submit-btn" class="px-5 py-2.5 text-sm font-semibold text-white bg-brand-600 hover:bg-brand-700 rounded-xl shadow-md transition-all">Salvar Ponto</button>
                 </div>
             </form>
         </div>
     </div>
 
     <script>
-        /**
-         * State Architecture - Single Source of Truth
-         */
-        let waterPoints = [
-            {
-                id: 'p01',
-                title: 'P01 - Torneira Vazando',
-                location: 'Banheiro',
-                type: 'reparar', // 'reparar', 'avaliar', 'reuso'
-                flowRate: 3.0, // Liters per hour loss
-                action: 'Solicitar reparo da borracha de vedação com urgência.',
-                notes: 'Gotejamento contínuo durante todo o período letivo.',
-                x: 82, // Percentage on map X
-                y: 25  // Percentage on map Y
-            },
-            {
-                id: 'p02',
-                title: 'P02 - Descarga Sanitária',
-                location: 'Banheiro',
-                type: 'avaliar',
-                flowRate: 1.5,
-                action: 'Inspeção técnica na válvula de descarga.',
-                notes: 'Escoamento silencioso e constante observado no vaso 02.',
-                x: 75,
-                y: 75
-            },
-            {
-                id: 'p03',
-                title: 'P03 - Condensado Ar-Cond.',
-                location: 'Sala 01',
-                type: 'reuso',
-                flowRate: 1.0, // Liters per hour generated
-                action: 'Instalar reservatório para rega de hortas e limpeza.',
-                notes: 'Excelente volume de água limpa produzida em dias quentes.',
-                x: 25,
-                y: 30
-            }
-        ];
-
+        // ======= API CONFIGURATION =======
+        const API_URL = 'https://script.google.com/macros/s/AKfycbyGszrD3iovTqGgjYx1XL7NCIlBfb3JL075MkfMzj6yKld3Xs25op5iA_JZKG2IfpSQRQ/exec';
+        
+        let waterPoints = []; // Agora começa vazio e busca os dados do Google Sheets
         let activePointId = null;
         let currentFilter = 'todos';
 
-        // Helper Configurations per Category
         const TYPE_CONFIG = {
-            reparar: {
-                label: 'Reparar',
-                badgeText: '🔴 Urgente',
-                badgeBg: 'bg-red-100 text-red-700 border-red-200',
-                pinBg: 'bg-red-500 text-white ring-red-300',
-                cardBorder: 'border-l-red-500',
-                cardBg: 'bg-red-50/40 hover:bg-red-50/80',
-                icon: 'fa-faucet-drip'
-            },
-            avaliar: {
-                label: 'Avaliar',
-                badgeText: '🟠 Em Avaliação',
-                badgeBg: 'bg-amber-100 text-amber-700 border-amber-200',
-                pinBg: 'bg-amber-500 text-white ring-amber-300',
-                cardBorder: 'border-l-amber-500',
-                cardBg: 'bg-amber-50/40 hover:bg-amber-50/80',
-                icon: 'fa-clipboard-check'
-            },
-            reuso: {
-                label: 'Reúso',
-                badgeText: '🔵 Potencial Reúso',
-                badgeBg: 'bg-sky-100 text-sky-700 border-sky-200',
-                pinBg: 'bg-sky-500 text-white ring-sky-300',
-                cardBorder: 'border-l-sky-500',
-                cardBg: 'bg-sky-50/40 hover:bg-sky-50/80',
-                icon: 'fa-hand-holding-droplet'
-            }
+            reparar: { label: 'Reparar', badgeText: '🔴 Urgente', badgeBg: 'bg-red-100 text-red-700 border-red-200', pinBg: 'bg-red-500 text-white ring-red-300', cardBorder: 'border-l-red-500', cardBg: 'bg-red-50/40 hover:bg-red-50/80', icon: 'fa-faucet-drip' },
+            avaliar: { label: 'Avaliar', badgeText: '🟠 Em Avaliação', badgeBg: 'bg-amber-100 text-amber-700 border-amber-200', pinBg: 'bg-amber-500 text-white ring-amber-300', cardBorder: 'border-l-amber-500', cardBg: 'bg-amber-50/40 hover:bg-amber-50/80', icon: 'fa-clipboard-check' },
+            reuso: { label: 'Reúso', badgeText: '🔵 Potencial Reúso', badgeBg: 'bg-sky-100 text-sky-700 border-sky-200', pinBg: 'bg-sky-500 text-white ring-sky-300', cardBorder: 'border-l-sky-500', cardBg: 'bg-sky-50/40 hover:bg-sky-50/80', icon: 'fa-hand-holding-droplet' }
         };
 
-        // DOM Elements
         const pinsContainer = document.getElementById('pins-container');
         const cardsContainer = document.getElementById('cards-container');
 
-        /**
-         * Initialize App
-         */
         document.addEventListener('DOMContentLoaded', () => {
-            renderApp();
-            
-            // Accessible Keyboard Event Listener for Map Elements
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape') closeModal();
-            });
+            loadPointsFromDatabase(); // Busca dados do Sheets ao carregar a página
+            document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
         });
 
-        /**
-         * Master Render Function
-         */
+        // ======= FETCH DATA FROM GOOGLE SHEETS =======
+        async function loadPointsFromDatabase() {
+            document.getElementById('loading-state').classList.remove('hidden');
+            
+            try {
+                // Ao fazer fetch no link do Web App sem parâmetros, ele aciona a função doGet() lá no Apps Script.
+                // O Apps Script precisa retornar os dados no formato de array JSON.
+                const response = await fetch(API_URL);
+                const data = await response.json();
+                
+                if (Array.isArray(data)) {
+                    waterPoints = data;
+                }
+            } catch (error) {
+                console.error('Erro ao conectar ao banco de dados:', error);
+                // Dados falsos de fallback apenas se falhar (para a interface não quebrar)
+                waterPoints = [
+                    { id: 'p01', title: 'Torneira (Local)', location: 'Banheiro', type: 'reparar', flowRate: 3.0, action: 'Verificar conexão', notes: 'Modo offline.', x: 80, y: 25 }
+                ];
+            } finally {
+                document.getElementById('loading-state').classList.add('hidden');
+                renderApp();
+            }
+        }
+
         function renderApp() {
             calculateDashboardMetrics();
             renderMapPins();
             renderCardsList();
         }
 
-        /**
-         * Dynamic Calculation of Dashboard Numbers
-         */
         function calculateDashboardMetrics() {
             const counts = { reparar: 0, avaliar: 0, reuso: 0 };
             let totalLossPerHour = 0;
-
             waterPoints.forEach(pt => {
                 if (counts[pt.type] !== undefined) counts[pt.type]++;
-                // Sum loss for reparar & avaliar categories
-                if (pt.type === 'reparar' || pt.type === 'avaliar') {
-                    totalLossPerHour += (parseFloat(pt.flowRate) || 0);
-                }
+                if (pt.type === 'reparar' || pt.type === 'avaliar') totalLossPerHour += (parseFloat(pt.flowRate) || 0);
             });
-
-            // Update UI Dashboard Metrics
             document.getElementById('dash-red-count').textContent = counts.reparar;
             document.getElementById('dash-orange-count').textContent = counts.avaliar;
             document.getElementById('dash-blue-count').textContent = counts.reuso;
-            
             document.getElementById('dash-loss-total').textContent = totalLossPerHour.toFixed(1);
-            
-            // Estimated daily loss (24 hours projection)
-            const dailyLoss = Math.round(totalLossPerHour * 24);
-            document.getElementById('dash-loss-day').textContent = `~${dailyLoss} L/dia`;
+            document.getElementById('dash-loss-day').textContent = `~${Math.round(totalLossPerHour * 24)} L/dia`;
         }
 
-        /**
-         * Render Interactive Pins on Blueprint Map
-         */
         function renderMapPins() {
             pinsContainer.innerHTML = '';
-
-            const filteredPoints = getFilteredPoints();
-
-            filteredPoints.forEach(pt => {
+            getFilteredPoints().forEach(pt => {
                 const config = TYPE_CONFIG[pt.type];
                 const isActive = pt.id === activePointId;
-
                 const pin = document.createElement('button');
-                pin.id = `pin-${pt.id}`;
-                pin.className = `pin-marker absolute flex items-center justify-center w-8 h-8 rounded-full shadow-md font-bold text-xs cursor-pointer focus:outline-none focus:ring-2 focus:ring-offset-2 ${config.pinBg} ${isActive ? 'active-pin' : ''} ${pt.type === 'reparar' ? 'pulse-urgent' : ''}`;
-                
-                // Absolute Positioning via Percentages
+                pin.className = `pin-marker absolute flex items-center justify-center w-8 h-8 rounded-full shadow-md font-bold text-xs cursor-pointer focus:outline-none ${config.pinBg} ${isActive ? 'active-pin' : ''} ${pt.type === 'reparar' ? 'pulse-urgent' : ''}`;
                 pin.style.left = `${pt.x}%`;
                 pin.style.top = `${pt.y}%`;
-                
-                pin.setAttribute('aria-label', `${pt.title} (${config.label}) - Local: ${pt.location}`);
-                pin.setAttribute('title', `${pt.title} (${pt.location})`);
-                
-                pin.innerHTML = `
-                    <span class="pointer-events-none">${pt.id.toUpperCase()}</span>
-                `;
-
-                pin.onclick = (e) => {
-                    e.stopPropagation();
-                    selectPoint(pt.id);
-                };
-
+                pin.innerHTML = `<span class="pointer-events-none">${String(pt.id).toUpperCase()}</span>`;
+                pin.onclick = (e) => { e.stopPropagation(); selectPoint(pt.id); };
                 pinsContainer.appendChild(pin);
             });
         }
 
-        /**
-         * Render Cards List with Dynamic Filters & Status Controls
-         */
         function renderCardsList() {
             cardsContainer.innerHTML = '';
             const filteredPoints = getFilteredPoints();
-
-            // Update badge counter
             document.getElementById('filtered-count-badge').textContent = `Mostrando ${filteredPoints.length}`;
 
             if (filteredPoints.length === 0) {
-                cardsContainer.innerHTML = `
-                    <div class="text-center py-10 bg-white rounded-2xl border border-dashed border-slate-300 p-6">
-                        <i class="fa-solid fa-droplet-slash text-slate-300 text-3xl mb-2"></i>
-                        <p class="text-sm font-semibold text-slate-600">Nenhum ponto encontrado</p>
-                        <p class="text-xs text-slate-400 mt-1">Tente alterar o filtro ou adicione um novo ponto.</p>
-                    </div>
-                `;
+                cardsContainer.innerHTML = `<div class="text-center py-10 bg-white rounded-2xl border border-dashed border-slate-300 p-6"><i class="fa-solid fa-droplet-slash text-slate-300 text-3xl mb-2"></i><p class="text-sm font-semibold text-slate-600">Nenhum ponto encontrado</p></div>`;
                 return;
             }
 
             filteredPoints.forEach(pt => {
                 const config = TYPE_CONFIG[pt.type];
                 const isActive = pt.id === activePointId;
-
                 const card = document.createElement('div');
                 card.id = `card-${pt.id}`;
-                card.tabIndex = 0;
-                card.role = 'button';
-                card.className = `card-item p-4 rounded-xl border border-slate-200 transition-all duration-200 cursor-pointer ${config.cardBorder} ${config.cardBg} ${isActive ? 'card-active bg-white ring-2 ring-brand-500/30' : ''}`;
-
+                card.className = `card-item p-4 rounded-xl border border-slate-200 transition-all cursor-pointer ${config.cardBorder} ${config.cardBg} ${isActive ? 'card-active bg-white ring-2 ring-brand-500/30' : ''}`;
                 card.onclick = () => selectPoint(pt.id);
-                card.onkeydown = (e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                        e.preventDefault();
-                        selectPoint(pt.id);
-                    }
-                };
-
+                
                 card.innerHTML = `
                     <div class="flex items-start justify-between gap-2 mb-2">
                         <div>
                             <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">${pt.location}</span>
-                            <h4 class="font-bold text-slate-800 text-sm flex items-center gap-1.5">
-                                <i class="fa-solid ${config.icon} text-xs"></i>
-                                ${pt.title}
-                            </h4>
+                            <h4 class="font-bold text-slate-800 text-sm flex items-center gap-1.5"><i class="fa-solid ${config.icon} text-xs"></i>${pt.title}</h4>
                         </div>
-                        <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full border shadow-sm ${config.badgeBg}">
-                            ${config.badgeText}
-                        </span>
+                        <span class="text-[11px] font-semibold px-2.5 py-0.5 rounded-full border ${config.badgeBg}">${config.badgeText}</span>
                     </div>
-
                     <div class="text-xs text-slate-600 space-y-1 mb-3">
-                        <p><strong><i class="fa-solid fa-gauge-high text-slate-400 mr-1"></i> ${pt.type === 'reuso' ? 'Geração' : 'Perda'}:</strong> <span class="font-semibold text-slate-800">${pt.flowRate} L/h</span></p>
+                        <p><strong><i class="fa-solid fa-gauge-high text-slate-400 mr-1"></i> Vazão:</strong> <span class="font-semibold">${pt.flowRate} L/h</span></p>
                         <p><strong><i class="fa-solid fa-wrench text-slate-400 mr-1"></i> Ação:</strong> ${pt.action}</p>
-                        ${pt.notes ? `<p class="text-slate-500 italic mt-1 bg-white/60 p-1.5 rounded border border-slate-100"><i class="fa-solid fa-circle-info text-slate-400 mr-1"></i> "${pt.notes}"</p>` : ''}
-                    </div>
-
-                    <!-- Interactive Actions Inside Card -->
-                    <div class="pt-2 border-t border-slate-200/60 flex items-center justify-between text-xs">
-                        <!-- Quick Status Switcher -->
-                        <div class="flex items-center gap-1" onclick="event.stopPropagation()">
-                            <span class="text-[10px] text-slate-400 font-medium mr-1">Status:</span>
-                            <select onchange="changePointType('${pt.id}', this.value)" class="text-[11px] bg-white border border-slate-300 rounded px-1.5 py-0.5 font-medium text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand-500">
-                                <option value="reparar" ${pt.type === 'reparar' ? 'selected' : ''}>🔴 Reparar</option>
-                                <option value="avaliar" ${pt.type === 'avaliar' ? 'selected' : ''}>🟠 Avaliar</option>
-                                <option value="reuso" ${pt.type === 'reuso' ? 'selected' : ''}>🔵 Reúso</option>
-                            </select>
-                        </div>
-
-                        <!-- Delete Button -->
-                        <button onclick="event.stopPropagation(); deletePoint('${pt.id}')" class="text-slate-400 hover:text-red-600 p-1 rounded hover:bg-red-50 transition-colors" title="Remover ponto hídrico">
-                            <i class="fa-solid fa-trash-can"></i>
-                        </button>
                     </div>
                 `;
-
                 cardsContainer.appendChild(card);
             });
         }
 
-        /**
-         * Bidirectional Highlight Selection (Pin <-> Card)
-         */
         function selectPoint(id) {
-            activePointId = (activePointId === id) ? null : id; // Toggle selection
-
-            renderMapPins();
-            renderCardsList();
-
-            if (activePointId) {
-                // Smooth scroll to card
-                const selectedCard = document.getElementById(`card-${id}`);
-                if (selectedCard) {
-                    selectedCard.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-                }
-            }
+            activePointId = (activePointId === id) ? null : id;
+            renderMapPins(); renderCardsList();
+            if (activePointId) document.getElementById(`card-${id}`)?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         }
 
-        /**
-         * Filter Points by Category
-         */
         function setFilter(filterType) {
             currentFilter = filterType;
-
-            // Update Tab UI
             document.querySelectorAll('.filter-btn').forEach(btn => {
                 btn.classList.remove('active', 'bg-white', 'text-brand-700', 'shadow-sm', 'font-semibold');
                 btn.classList.add('text-slate-600');
-                btn.setAttribute('aria-selected', 'false');
             });
-
             const activeBtn = document.getElementById(`filter-${filterType}`);
-            if (activeBtn) {
-                activeBtn.classList.add('active', 'bg-white', 'text-brand-700', 'shadow-sm', 'font-semibold');
-                activeBtn.classList.remove('text-slate-600');
-                activeBtn.setAttribute('aria-selected', 'true');
-            }
-
+            if (activeBtn) activeBtn.classList.add('active', 'bg-white', 'text-brand-700', 'shadow-sm', 'font-semibold');
             renderApp();
         }
 
         function getFilteredPoints() {
-            if (currentFilter === 'todos') return waterPoints;
-            return waterPoints.filter(p => p.type === currentFilter);
+            return currentFilter === 'todos' ? waterPoints : waterPoints.filter(p => p.type === currentFilter);
         }
 
-        /**
-         * Change Status/Type of a Point Dynamically
-         */
-        function changePointType(id, newType) {
-            const point = waterPoints.find(p => p.id === id);
-            if (point) {
-                point.type = newType;
-                renderApp();
-            }
-        }
-
-        /**
-         * Delete Point from State
-         */
-        function deletePoint(id) {
-            if (confirm('Deseja realmente remover este ponto hídrico do mapeamento?')) {
-                waterPoints = waterPoints.filter(p => p.id !== id);
-                if (activePointId === id) activePointId = null;
-                renderApp();
-            }
-        }
-
-        /**
-         * Modal Form Controls
-         */
         function openModal() {
             const modal = document.getElementById('add-modal');
-            const modalBox = modal.querySelector('.modal-box');
             modal.classList.remove('hidden');
-            setTimeout(() => {
-                modalBox.classList.remove('scale-95', 'opacity-0');
-                modalBox.classList.add('scale-100', 'opacity-100');
-            }, 10);
-            document.getElementById('form-title').focus();
+            setTimeout(() => modal.querySelector('.modal-box').classList.remove('scale-95', 'opacity-0'), 10);
         }
 
         function closeModal() {
             const modal = document.getElementById('add-modal');
-            const modalBox = modal.querySelector('.modal-box');
-            modalBox.classList.remove('scale-100', 'opacity-100');
-            modalBox.classList.add('scale-95', 'opacity-0');
-            setTimeout(() => {
-                modal.classList.add('hidden');
-                document.getElementById('point-form').reset();
-            }, 200);
+            modal.querySelector('.modal-box').classList.add('scale-95', 'opacity-0');
+            setTimeout(() => { modal.classList.add('hidden'); document.getElementById('point-form').reset(); }, 200);
         }
 
-        /**
-         * Handle Form Submission for New Points
-         */
-        function handleFormSubmit(e) {
+        // ======= SAVE DATA TO GOOGLE SHEETS =======
+        async function handleFormSubmit(e) {
             e.preventDefault();
+            
+            const btn = document.getElementById('submit-btn');
+            btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Salvando...';
+            btn.disabled = true;
 
             const nextNum = waterPoints.length + 1;
-            const formattedId = `p${nextNum < 10 ? '0' + nextNum : nextNum}`;
-
             const newPoint = {
-                id: formattedId,
+                id: `p${nextNum < 10 ? '0' + nextNum : nextNum}`,
                 title: document.getElementById('form-title').value.trim(),
                 location: document.getElementById('form-location').value,
                 type: document.getElementById('form-type').value,
@@ -756,17 +476,28 @@
                 y: parseFloat(document.getElementById('form-y').value) || 50
             };
 
-            waterPoints.push(newPoint);
-            activePointId = newPoint.id;
-
-            closeModal();
-            renderApp();
-
-            // Scroll to newly created card
-            setTimeout(() => {
-                const newCard = document.getElementById(`card-${newPoint.id}`);
-                if (newCard) newCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            }, 300);
+            try {
+                // Envia a requisição POST (o 'no-cors' força o envio e evita bloqueio de preflight do Google, mas não lemos o retorno)
+                await fetch(API_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(newPoint)
+                });
+                
+                // Adiciona na tela imediatamente
+                waterPoints.push(newPoint);
+                activePointId = newPoint.id;
+                closeModal();
+                renderApp();
+                
+            } catch (error) {
+                console.error("Erro ao salvar:", error);
+                alert("Ocorreu um erro ao salvar. Tente novamente.");
+            } finally {
+                btn.innerHTML = 'Salvar Ponto';
+                btn.disabled = false;
+            }
         }
     </script>
 </body>
