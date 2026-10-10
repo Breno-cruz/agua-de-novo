@@ -309,7 +309,7 @@
         // ======= API CONFIGURATION =======
         const API_URL = 'https://script.google.com/macros/s/AKfycbyGszrD3iovTqGgjYx1XL7NCIlBfb3JL075MkfMzj6yKld3Xs25op5iA_JZKG2IfpSQRQ/exec';
         
-        let waterPoints = []; // Agora começa vazio e busca os dados do Google Sheets
+        let waterPoints = []; 
         let activePointId = null;
         let currentFilter = 'todos';
 
@@ -323,7 +323,7 @@
         const cardsContainer = document.getElementById('cards-container');
 
         document.addEventListener('DOMContentLoaded', () => {
-            loadPointsFromDatabase(); // Busca dados do Sheets ao carregar a página
+            loadPointsFromDatabase(); 
             document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeModal(); });
         });
 
@@ -332,8 +332,6 @@
             document.getElementById('loading-state').classList.remove('hidden');
             
             try {
-                // Ao fazer fetch no link do Web App sem parâmetros, ele aciona a função doGet() lá no Apps Script.
-                // O Apps Script precisa retornar os dados no formato de array JSON.
                 const response = await fetch(API_URL);
                 const data = await response.json();
                 
@@ -342,10 +340,6 @@
                 }
             } catch (error) {
                 console.error('Erro ao conectar ao banco de dados:', error);
-                // Dados falsos de fallback apenas se falhar (para a interface não quebrar)
-                waterPoints = [
-                    { id: 'p01', title: 'Torneira (Local)', location: 'Banheiro', type: 'reparar', flowRate: 3.0, action: 'Verificar conexão', notes: 'Modo offline.', x: 80, y: 25 }
-                ];
             } finally {
                 document.getElementById('loading-state').classList.add('hidden');
                 renderApp();
@@ -405,6 +399,7 @@
                 card.className = `card-item p-4 rounded-xl border border-slate-200 transition-all cursor-pointer ${config.cardBorder} ${config.cardBg} ${isActive ? 'card-active bg-white ring-2 ring-brand-500/30' : ''}`;
                 card.onclick = () => selectPoint(pt.id);
                 
+                // Atualizado para incluir o botão de deletar (lixeira)
                 card.innerHTML = `
                     <div class="flex items-start justify-between gap-2 mb-2">
                         <div>
@@ -416,6 +411,12 @@
                     <div class="text-xs text-slate-600 space-y-1 mb-3">
                         <p><strong><i class="fa-solid fa-gauge-high text-slate-400 mr-1"></i> Vazão:</strong> <span class="font-semibold">${pt.flowRate} L/h</span></p>
                         <p><strong><i class="fa-solid fa-wrench text-slate-400 mr-1"></i> Ação:</strong> ${pt.action}</p>
+                    </div>
+                    <!-- Botão de Deletar -->
+                    <div class="pt-2 border-t border-slate-200/60 flex items-center justify-end text-xs">
+                        <button onclick="event.stopPropagation(); deletePoint('${pt.id}')" class="text-slate-400 hover:text-red-600 p-1.5 rounded hover:bg-red-50 transition-colors" title="Remover ponto hídrico">
+                            <i class="fa-solid fa-trash-can"></i> Apagar
+                        </button>
                     </div>
                 `;
                 cardsContainer.appendChild(card);
@@ -456,19 +457,19 @@
         }
 
         // ======= SAVE DATA TO GOOGLE SHEETS =======
-      async function handleFormSubmit(e) {
+        async function handleFormSubmit(e) {
             e.preventDefault();
             
             const btn = document.getElementById('submit-btn');
             btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Salvando...';
             btn.disabled = true;
 
-            const nextNum = waterPoints.length + 1;
+            const nextNum = waterPoints.length > 0 ? Math.max(...waterPoints.map(p => parseInt(p.id.replace('p', '')))) + 1 : 1;
             
-            // Corrige a vírgula para ponto (ex: 1,5 vira 1.5) para o JS não dar erro
             let vazaoInput = document.getElementById('form-flow').value.replace(',', '.');
 
             const newPoint = {
+                actionType: 'add', // Indica para o Google Sheets que é uma nova inserção
                 id: `p${nextNum < 10 ? '0' + nextNum : nextNum}`,
                 title: document.getElementById('form-title').value.trim(),
                 location: document.getElementById('form-location').value,
@@ -486,14 +487,12 @@
                 mode: 'no-cors',
                 body: JSON.stringify(newPoint)
             }).then(() => {
-                // Como não lemos o retorno do Google, simplesmente adicionamos à tela
                 waterPoints.push(newPoint);
                 activePointId = newPoint.id;
                 closeModal();
                 renderApp();
             }).catch(error => {
                 console.warn("Aviso de rede ignorado: os dados foram salvos.", error);
-                // Fecha o modal e atualiza a tela mesmo se o Chrome reclamar
                 waterPoints.push(newPoint);
                 closeModal();
                 renderApp();
@@ -501,6 +500,29 @@
                 btn.innerHTML = 'Salvar Ponto';
                 btn.disabled = false;
             });
+        }
+
+        // ======= DELETE DATA FROM GOOGLE SHEETS =======
+        async function deletePoint(id) {
+            if (confirm('Deseja realmente remover este ponto hídrico do mapeamento?')) {
+                // Remove da tela imediatamente para não deixar o usuário esperando
+                waterPoints = waterPoints.filter(p => p.id !== id);
+                if (activePointId === id) activePointId = null;
+                renderApp();
+
+                const deleteData = {
+                    actionType: 'delete',
+                    id: id
+                };
+
+                fetch(API_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    body: JSON.stringify(deleteData)
+                }).catch(error => {
+                    console.warn("Aviso de rede ignorado: a exclusão foi enviada.", error);
+                });
+            }
         }
     </script>
 </body>
